@@ -26,7 +26,9 @@ const Weather = ({ data }) => {
       <div className="mb-4">
         <h3 className="mb-4">Pressure</h3>
         <DataRow label="At sea level" value={data.main.pressure} unit="hPa" />
-        {data.main.grnd_level && <DataRow label="At ground level" value={data.main.grnd_level} unit="hPa" />}
+        {data.main.grnd_level !== undefined && (
+          <DataRow label="At ground level" value={data.main.grnd_level} unit="hPa" />
+        )}
       </div>
       <div>
         <DataRow label="Humidity" value={data.main.humidity} unit="%" />
@@ -38,25 +40,33 @@ const Weather = ({ data }) => {
         <h3 className="mb-4">Wind</h3>
         <DataRow label="Speed" value={data.wind.speed} unit="m/s" />
         <DataRow label="Direction" value={data.wind.deg} unit="°" />
-        {data.wind.gust && <DataRow label="Gust" value={data.wind.gust} unit="m/s" />}
+        {data.wind.gust !== undefined && <DataRow label="Gust" value={data.wind.gust} unit="m/s" />}
       </div>
-      {data.clouds.all && (
+      {data.clouds.all !== undefined && (
         <div className="mb-4">
           <DataRow label="Cloudiness" value={data.clouds.all} unit="%" />
         </div>
       )}
-      {data.rain && (
+      {data.rain !== undefined && (
         <div className="mb-4">
           <h3 className="mb-4">Rain volume:</h3>
-          {data.rain["1h"] && <DataRow label="Rain volume (last 1 hour)" value={data.rain["1h"]} unit="mm" />}
-          {data.rain["3h"] && <DataRow label="Rain volume (last 3 hours)" value={data.rain["3h"]} unit="mm" />}
+          {data.rain["1h"] !== undefined && (
+            <DataRow label="Rain volume (last 1 hour)" value={data.rain["1h"]} unit="mm" />
+          )}
+          {data.rain["3h"] !== undefined && (
+            <DataRow label="Rain volume (last 3 hours)" value={data.rain["3h"]} unit="mm" />
+          )}
         </div>
       )}
-      {data.snow && (
+      {data.snow !== undefined && (
         <div className="mb-4">
           <h3 className="mb-4">Snow volume:</h3>
-          {data.snow["1h"] && <DataRow label="Snow volume (last 1 hour)" value={data.snow["1h"]} unit="mm" />}
-          {data.snow["3h"] && <DataRow label="Snow volume (last 3 hours)" value={data.snow["3h"]} unit="mm" />}
+          {data.snow["1h"] !== undefined && (
+            <DataRow label="Snow volume (last 1 hour)" value={data.snow["1h"]} unit="mm" />
+          )}
+          {data.snow["3h"] !== undefined && (
+            <DataRow label="Snow volume (last 3 hours)" value={data.snow["3h"]} unit="mm" />
+          )}
         </div>
       )}
       <div className="mb-4">
