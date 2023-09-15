@@ -39,30 +39,28 @@ const Forecast = ({ data, index }) => {
             <DataRow label="Direction" value={data.wind.deg} unit="°" />
             {data.wind.gust && <DataRow label="Gust" value={data.wind.gust} unit="m/s" />}
           </div>
-          <div className="mb-4">
-            {data.clouds.all && <DataRow label="Cloudiness" value={data.clouds.all} unit="%" />}
-          </div>
+          {data.clouds.all && (
+            <div className="mb-4">
+              <DataRow label="Cloudiness" value={data.clouds.all} unit="%" />
+            </div>
+          )}
           <div className="mb-4">
             <DataRow label="Visibility" value={data.visibility} unit="m" />
           </div>
-          <div className="mb-4">
-            {data.rain && (
-              <>
-                <h3 className="mb-4">Rain volume:</h3>
-                {data.rain["1h"] && <DataRow label="Rain volume (last 1 hour)" value={data.rain["1h"]} unit="mm" />}
-                {data.rain["3h"] && <DataRow label="Rain volume (last 3 hours)" value={data.rain["3h"]} unit="mm" />}
-              </>
-            )}
-          </div>
-          <div className="mb-4">
-            {data.snow && (
-              <>
-                <h3 className="mb-4">Snow volume:</h3>
-                {data.snow["1h"] && <DataRow label="Snow volume (last 1 hour)" value={data.snow["1h"]} unit="mm" />}
-                {data.snow["3h"] && <DataRow label="Snow volume (last 3 hours)" value={data.snow["3h"]} unit="mm" />}
-              </>
-            )}
-          </div>
+          {data.rain && (
+            <div className="mb-4">
+              <h3 className="mb-4">Rain volume:</h3>
+              {data.rain["1h"] && <DataRow label="Rain volume (last 1 hour)" value={data.rain["1h"]} unit="mm" />}
+              {data.rain["3h"] && <DataRow label="Rain volume (last 3 hours)" value={data.rain["3h"]} unit="mm" />}
+            </div>
+          )}
+          {data.snow && (
+            <div className="mb-4">
+              <h3 className="mb-4">Snow volume:</h3>
+              {data.snow["1h"] && <DataRow label="Snow volume (last 1 hour)" value={data.snow["1h"]} unit="mm" />}
+              {data.snow["3h"] && <DataRow label="Snow volume (last 3 hours)" value={data.snow["3h"]} unit="mm" />}
+            </div>
+          )}
         </article>
       </Accordion.Body>
     </Accordion.Item>
