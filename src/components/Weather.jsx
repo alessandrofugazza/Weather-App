@@ -1,13 +1,8 @@
 import DataRow from "./DataRow";
 
-const Weather = ({ data }) => {
-  const convertDateTime = unixTimestamp => new Date(unixTimestamp * 1000).toLocaleString();
-  const convertTimezone = secondsOffset => {
-    const gmtOffset = secondsOffset / 3600;
-    return "GMT" + (secondsOffset >= 0 ? "+" : "") + gmtOffset;
-  };
-  //   le funzioni sopra non sapevo se passarle come props visto che si ripetono in altri components,
-  //   ma preferisco tenere solo data nelle props anche perche' non c'entrano molto con il il contenuto di City.jsx
+const Weather = ({ data, datetimeFunctions }) => {
+  const { convertDateTime, convertTimezone } = datetimeFunctions;
+
   return (
     <article>
       <div className="d-flex mb-5 justify-content-center align-items-center">

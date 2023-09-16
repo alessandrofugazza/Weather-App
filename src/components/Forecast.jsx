@@ -1,8 +1,8 @@
 import { Accordion } from "react-bootstrap";
 import DataRow from "./DataRow";
 
-const Forecast = ({ data, index }) => {
-  const convertDateTime = unixTimestamp => new Date(unixTimestamp * 1000).toLocaleString();
+const Forecast = ({ data, index, datetimeFunctions }) => {
+  const { convertDateTime, convertTimezone } = datetimeFunctions;
   return (
     <Accordion.Item eventKey={String(index)}>
       <Accordion.Header>Forecast for {convertDateTime(data.dt)}</Accordion.Header>
