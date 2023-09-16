@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
-import { Accordion, Container, Spinner } from "react-bootstrap";
+import { Accordion, Container, Form, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Weather from "./Weather";
 import Forecast from "./Forecast";
+import { useDispatch, useSelector } from "react-redux";
 
 const City = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
   const [weatherIsLoading, setWeatherIsLoading] = useState(true);
   const [forecastIsLoading, setForecastIsLoading] = useState(true);
+
+  const detailedView = useSelector(state => state.detailedView);
+  const dispatch = useDispatch();
 
   // Functions for Weather and Forecast
   const convertDateTime = unixTimestamp => new Date(unixTimestamp * 1000).toLocaleString();
@@ -64,8 +68,16 @@ const City = () => {
 
   return (
     <>
-      <Container className="my-5 pt-5 pb-3 text-center bg-light border">
-        <h1 className="mb-3 ">Weather for {params.name}</h1>
+      <Container className="my-5 pb-3 text-center bg-light border">
+        <Form.Switch // prettier-ignore
+          type="switch"
+          id="custom-switch"
+          label="Detailed View"
+          className="d-flex justify-content-end mt-2 gap-2"
+          checked={detailedView}
+          onChange={() => dispatch({ type: "TOGGLE_DETAILED_VIEW" })}
+        />
+        <h1 className="mb-3 mt-4 ">{params.name}</h1>
         {weatherIsLoading && <Spinner variant="primary"></Spinner>}
         {weatherData && <Weather data={weatherData} datetimeFunctions={datetimeFunctions} />}
         {forecastIsLoading && <Spinner variant="primary"></Spinner>}
