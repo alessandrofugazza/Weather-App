@@ -55,8 +55,8 @@ const City = () => {
 
   return (
     <>
-      <Container className="my-5 text-center bg-light border">
-        <h1 className="mb-3 my-5">Weather for {params.name}</h1>
+      <Container className="my-5 pt-5 pb-3 text-center bg-light border">
+        <h1 className="mb-3 ">Weather for {params.name}</h1>
         {weatherIsLoading && <Spinner variant="primary"></Spinner>}
         {weatherData && <Weather data={weatherData} />}
         {forecastIsLoading && <Spinner variant="primary"></Spinner>}
@@ -67,7 +67,6 @@ const City = () => {
                 <Forecast data={forecast} key={index} index={index} />
               ))}
             </Accordion>
-            <ForecastDetails data={forecastData.city} />
           </>
         )}
       </Container>
