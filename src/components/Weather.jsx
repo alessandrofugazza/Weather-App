@@ -87,9 +87,9 @@ const Weather = ({ data, datetimeFunctions }) => {
             </p>
             <img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="weather icon" />
           </div>
-          <DataRow label="Current" value={Math.round(data.main.temp)} unit="°C" />
-          <DataRow label="Min" value={Math.round(data.main.temp_min)} unit="°C" />
-          <DataRow label="Max" value={Math.round(data.main.temp_max)} unit="°C" />
+          <DataRow label="Current" value={Math.round(data.main.temp)} unit="°C" colWidth={2} />
+          <DataRow label="Min" value={Math.round(data.main.temp_min)} unit="°C" colWidth={2} />
+          <DataRow label="Max" value={Math.round(data.main.temp_max)} unit="°C" colWidth={2} />
         </article>
       )}
     </>

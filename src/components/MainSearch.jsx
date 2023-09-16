@@ -51,7 +51,7 @@ const MainSearch = () => {
           </Col>
         )}
         {isLoading && (
-          <Col xs={10} className="mx-auto">
+          <Col xs={10} className="mx-auto my-3">
             <Spinner variant="primary"></Spinner>
           </Col>
         )}

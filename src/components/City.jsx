@@ -82,13 +82,11 @@ const City = () => {
         {weatherData && <Weather data={weatherData} datetimeFunctions={datetimeFunctions} />}
         {forecastIsLoading && <Spinner variant="primary"></Spinner>}
         {forecastData && (
-          <>
-            <Accordion>
-              {forecastData.list.map((forecast, index) => (
-                <Forecast data={forecast} key={index} index={index} datetimeFunctions={datetimeFunctions} />
-              ))}
-            </Accordion>
-          </>
+          <Accordion>
+            {forecastData.list.map((forecast, index) => (
+              <Forecast data={forecast} key={index} index={index} datetimeFunctions={datetimeFunctions} />
+            ))}
+          </Accordion>
         )}
       </Container>
     </>
