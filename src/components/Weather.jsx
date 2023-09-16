@@ -7,7 +7,19 @@ const Weather = ({ data, datetimeFunctions }) => {
   const detailedView = useSelector(state => state.detailedView);
   return (
     <>
-      {!detailedView && <p>YO</p>}
+      {!detailedView && (
+        <article className="mb-5">
+          <div className="d-flex mb-3 justify-content-center align-items-center">
+            <p className="display-6 me-4 mb-0">
+              {data.weather[0].main} — {data.weather[0].description}
+            </p>
+            <img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="weather icon" />
+          </div>
+          <DataRow label="Current" value={Math.round(data.main.temp)} unit="°C" />
+          <DataRow label="Min" value={Math.round(data.main.temp_min)} unit="°C" />
+          <DataRow label="Max" value={Math.round(data.main.temp_max)} unit="°C" />
+        </article>
+      )}
       {detailedView && (
         <article>
           <div className="d-flex mb-5 justify-content-center align-items-center">
