@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Accordion, Container, Form, Spinner } from "react-bootstrap";
+import { Accordion, Container, Form, Spinner, Stack } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Weather from "./Weather";
 import Forecast from "./Forecast";
@@ -69,14 +69,17 @@ const City = () => {
   return (
     <>
       <Container className="my-5 pb-3 text-center bg-light border">
-        <Form.Switch // prettier-ignore
-          type="switch"
-          id="custom-switch"
-          label="Detailed View"
-          className="d-flex justify-content-end mt-2 gap-2"
-          checked={detailedView}
-          onChange={() => dispatch({ type: "TOGGLE_DETAILED_VIEW" })}
-        />
+        <Stack direction="horizontal">
+          <Form.Switch // prettier-ignore
+            type="switch"
+            id="custom-switch"
+            label="Detailed View"
+            className="mt-2 ms-auto"
+            checked={detailedView}
+            onChange={() => dispatch({ type: "TOGGLE_DETAILED_VIEW" })}
+          />
+        </Stack>
+
         <h1 className="mb-3 mt-4 ">{params.name}</h1>
         {weatherIsLoading && <Spinner variant="primary"></Spinner>}
         {weatherData && <Weather data={weatherData} datetimeFunctions={datetimeFunctions} />}
